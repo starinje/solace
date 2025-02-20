@@ -1,16 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
-interface Advocate {
-  firstName: string;
-  lastName: string;
-  city: string;
-  degree: string;
-  specialties: string[];
-  yearsOfExperience: number;
-  phoneNumber: number;
-}
+import { SearchBar } from "@/components/SearchBar";
+import { AdvocatesTable } from "@/components/AdvocatesTable";
+import { Advocate } from "@/types/advocate";
 
 export default function Home() {
   const [advocates, setAdvocates] = useState<Advocate[]>([]);
@@ -74,58 +67,13 @@ export default function Home() {
     <main className="p-6">
       <h1 className="text-2xl font-bold mb-6">Solace Advocates</h1>
       
-      <div className="mb-6">
-        <p className="mb-2">Search</p>
-        <p className="mb-2">
-          Searching for: <span>{searchTerm}</span>
-        </p>
-        <div className="flex gap-2">
-          <input
-            type="text"
-            value={searchTerm}
-            onChange={handleSearch}
-            className="border border-gray-300 rounded px-2 py-1"
-            placeholder="Search advocates..."
-          />
-          <button
-            onClick={handleReset}
-            className="bg-gray-200 px-4 py-1 rounded"
-          >
-            Reset Search
-          </button>
-        </div>
-      </div>
+      <SearchBar 
+        searchTerm={searchTerm}
+        onSearch={handleSearch}
+        onReset={handleReset}
+      />
 
-      <table className="w-full border-collapse">
-        <thead>
-          <tr>
-            <th className="text-left p-2">First Name</th>
-            <th className="text-left p-2">Last Name</th>
-            <th className="text-left p-2">City</th>
-            <th className="text-left p-2">Degree</th>
-            <th className="text-left p-2">Specialties</th>
-            <th className="text-left p-2">Years of Experience</th>
-            <th className="text-left p-2">Phone Number</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredAdvocates.map((advocate, index) => (
-            <tr key={index} className="border-t">
-              <td className="p-2">{advocate.firstName}</td>
-              <td className="p-2">{advocate.lastName}</td>
-              <td className="p-2">{advocate.city}</td>
-              <td className="p-2">{advocate.degree}</td>
-              <td className="p-2">
-                {advocate.specialties.map((specialty, i) => (
-                  <div key={i} className="mb-1">{specialty}</div>
-                ))}
-              </td>
-              <td className="p-2">{advocate.yearsOfExperience}</td>
-              <td className="p-2">{advocate.phoneNumber}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <AdvocatesTable advocates={filteredAdvocates} />
     </main>
   );
 }
