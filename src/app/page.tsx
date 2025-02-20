@@ -33,9 +33,11 @@ export default function Home() {
   }, []);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const term = e.target.value.toLowerCase();
-    setSearchTerm(term);
-
+    const inputValue = e.target.value;
+    setSearchTerm(inputValue);
+    
+    const term = inputValue.toLowerCase();
+    
     const filtered = advocates.filter((advocate) => {
       return (
         advocate.firstName.toLowerCase().includes(term) ||
