@@ -67,13 +67,14 @@ export default function Home() {
 
   return (
     <main className="p-6">
-      <h1 className="text-2xl font-bold mb-6">Solace Advocates</h1>
-      
-      <SearchBar 
-        searchTerm={searchTerm}
-        onSearch={handleSearch}
-        onReset={handleReset}
-      />
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-2xl font-bold">Solace Advocates</h1>
+        <SearchBar 
+          searchTerm={searchTerm}
+          onSearch={handleSearch}
+          onReset={handleReset}
+        />
+      </div>
 
       <AdvocatesTable advocates={filteredAdvocates} />
     </main>

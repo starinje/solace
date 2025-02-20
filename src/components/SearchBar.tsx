@@ -8,26 +8,24 @@ interface SearchBarProps {
 
 export function SearchBar({ searchTerm, onSearch, onReset }: SearchBarProps) {
   return (
-    <div className="mb-6">
-      <p className="mb-2">Search</p>
-      <p className="mb-2">
-        Searching for: <span>{searchTerm}</span>
-      </p>
-      <div className="flex gap-2">
+    <div className="flex items-center gap-4">
+      <div>
         <input
           type="text"
           value={searchTerm}
           onChange={onSearch}
-          className="border border-gray-300 rounded px-2 py-1"
+          className="border border-gray-300 rounded px-3 py-2"
           placeholder="Search advocates..."
         />
+      </div>
+      {searchTerm && (
         <button
           onClick={onReset}
-          className="bg-gray-200 px-4 py-1 rounded"
+          className="bg-gray-200 px-4 py-2 rounded hover:bg-gray-300 transition-colors"
         >
-          Reset Search
+          Reset
         </button>
-      </div>
+      )}
     </div>
   );
 } 
