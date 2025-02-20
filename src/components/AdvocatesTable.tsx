@@ -28,7 +28,7 @@ export function AdvocatesTable({ advocates }: AdvocatesTableProps) {
             <th className="px-4 py-4 text-left text-xs font-bold uppercase tracking-wider text-gray-700 bg-gray-100">
               Experience
             </th>
-            <th className="px-4 py-4 text-left text-xs font-bold uppercase tracking-wider text-gray-700 bg-gray-100">
+            <th className="px-4 py-4 text-left text-xs font-bold uppercase tracking-wider text-gray-700 bg-gray-100 whitespace-nowrap">
               Phone
             </th>
           </tr>
@@ -56,7 +56,7 @@ export function AdvocatesTable({ advocates }: AdvocatesTableProps) {
                 </div>
               </td>
               <td className="px-4 py-3 text-gray-900">{advocate.yearsOfExperience} years</td>
-              <td className="px-4 py-3 text-gray-900">
+              <td className="px-4 py-3 text-gray-900 whitespace-nowrap">
                 {advocate.phoneNumber.toString().replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3')}
               </td>
             </tr>
