@@ -11,3 +11,8 @@ Added proper error handling for the fetch request
 Made the search input controlled
 Added proper spacing and layout
 Improved accessibility with proper table structure
+
+
+standarized styling
+brokeout into react components
+visual enhancements to the table and overall page

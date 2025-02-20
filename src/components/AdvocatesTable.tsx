@@ -68,7 +68,7 @@ export function AdvocatesTable({ advocates }: AdvocatesTableProps) {
               onClick={() => handleSort('firstName')}
               className={`px-4 py-4 text-left text-xs font-bold uppercase tracking-wider text-gray-700 bg-gray-100 ${sortableHeaderClass}`}
             >
-              <div className="flex items-center">
+              <div className="flex items-center whitespace-nowrap">
                 First Name {getSortIcon('firstName')}
               </div>
             </th>
@@ -76,7 +76,7 @@ export function AdvocatesTable({ advocates }: AdvocatesTableProps) {
               onClick={() => handleSort('lastName')}
               className={`px-4 py-4 text-left text-xs font-bold uppercase tracking-wider text-gray-700 bg-gray-100 ${sortableHeaderClass}`}
             >
-              <div className="flex items-center">
+              <div className="flex items-center whitespace-nowrap">
                 Last Name {getSortIcon('lastName')}
               </div>
             </th>
@@ -127,7 +127,7 @@ export function AdvocatesTable({ advocates }: AdvocatesTableProps) {
                   {advocate.specialties.map((specialty, i) => (
                     <span 
                       key={i} 
-                      className="inline-flex items-center rounded-full bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700"
+                      className="inline-flex items-center rounded-full bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 hover:bg-blue-100 hover:text-blue-800 transition-colors cursor-default"
                     >
                       {specialty}
                     </span>
