@@ -6,35 +6,63 @@ interface AdvocatesTableProps {
 
 export function AdvocatesTable({ advocates }: AdvocatesTableProps) {
   return (
-    <table className="w-full border-collapse">
-      <thead>
-        <tr>
-          <th className="text-left p-2">First Name</th>
-          <th className="text-left p-2">Last Name</th>
-          <th className="text-left p-2">City</th>
-          <th className="text-left p-2">Degree</th>
-          <th className="text-left p-2">Specialties</th>
-          <th className="text-left p-2">Years of Experience</th>
-          <th className="text-left p-2">Phone Number</th>
-        </tr>
-      </thead>
-      <tbody>
-        {advocates.map((advocate, index) => (
-          <tr key={index} className="border-t">
-            <td className="p-2">{advocate.firstName}</td>
-            <td className="p-2">{advocate.lastName}</td>
-            <td className="p-2">{advocate.city}</td>
-            <td className="p-2">{advocate.degree}</td>
-            <td className="p-2">
-              {advocate.specialties.map((specialty, i) => (
-                <div key={i} className="mb-1">{specialty}</div>
-              ))}
-            </td>
-            <td className="p-2">{advocate.yearsOfExperience}</td>
-            <td className="p-2">{advocate.phoneNumber}</td>
+    <div className="overflow-x-auto rounded-lg border border-gray-200 shadow-sm">
+      <table className="w-full border-collapse bg-white text-sm">
+        <thead className="bg-gray-100">
+          <tr>
+            <th className="px-4 py-4 text-left text-xs font-bold uppercase tracking-wider text-gray-700 bg-gray-100">
+              First Name
+            </th>
+            <th className="px-4 py-4 text-left text-xs font-bold uppercase tracking-wider text-gray-700 bg-gray-100">
+              Last Name
+            </th>
+            <th className="px-4 py-4 text-left text-xs font-bold uppercase tracking-wider text-gray-700 bg-gray-100">
+              City
+            </th>
+            <th className="px-4 py-4 text-left text-xs font-bold uppercase tracking-wider text-gray-700 bg-gray-100">
+              Degree
+            </th>
+            <th className="px-4 py-4 text-left text-xs font-bold uppercase tracking-wider text-gray-700 bg-gray-100">
+              Specialties
+            </th>
+            <th className="px-4 py-4 text-left text-xs font-bold uppercase tracking-wider text-gray-700 bg-gray-100">
+              Experience
+            </th>
+            <th className="px-4 py-4 text-left text-xs font-bold uppercase tracking-wider text-gray-700 bg-gray-100">
+              Phone
+            </th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody className="divide-y divide-gray-100">
+          {advocates.map((advocate, index) => (
+            <tr 
+              key={index} 
+              className={`hover:bg-gray-50 ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}
+            >
+              <td className="px-4 py-3 text-gray-900">{advocate.firstName}</td>
+              <td className="px-4 py-3 text-gray-900">{advocate.lastName}</td>
+              <td className="px-4 py-3 text-gray-900">{advocate.city}</td>
+              <td className="px-4 py-3 text-gray-900">{advocate.degree}</td>
+              <td className="px-4 py-3">
+                <div className="flex flex-wrap gap-1">
+                  {advocate.specialties.map((specialty, i) => (
+                    <span 
+                      key={i} 
+                      className="inline-flex items-center rounded-full bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700"
+                    >
+                      {specialty}
+                    </span>
+                  ))}
+                </div>
+              </td>
+              <td className="px-4 py-3 text-gray-900">{advocate.yearsOfExperience} years</td>
+              <td className="px-4 py-3 text-gray-900">
+                {advocate.phoneNumber.toString().replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3')}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 } 
