@@ -1,6 +1,7 @@
 import { Advocate } from '../types/advocate';
 import { SortConfig, SortField, SortDirection } from '../types/sorting';
 import { useState } from 'react';
+import { BiSortAlt2, BiSortUp, BiSortDown } from 'react-icons/bi';
 
 interface AdvocatesTableProps {
   advocates: Advocate[];
@@ -36,23 +37,17 @@ export function AdvocatesTable({ advocates }: AdvocatesTableProps) {
     if (sortConfig.field !== field) {
       return (
         <span className="inline-flex ml-2 text-gray-400">
-          <svg className="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
-            <path fillRule="evenodd" d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
-          </svg>
+          <BiSortAlt2 size={18} />
         </span>
       );
     }
     return sortConfig.direction === 'asc' ? (
       <span className="inline-flex ml-2 text-blue-600">
-        <svg className="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
-          <path fillRule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clipRule="evenodd" />
-        </svg>
+        <BiSortUp size={18} />
       </span>
     ) : (
       <span className="inline-flex ml-2 text-blue-600">
-        <svg className="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
-          <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-        </svg>
+        <BiSortDown size={18} />
       </span>
     );
   };
